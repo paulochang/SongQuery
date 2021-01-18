@@ -12,24 +12,19 @@ namespace Genius.SDK
         {
         }
 
-        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
+            CancellationToken cancellationToken)
         {
             Console.WriteLine("Request:");
             Console.WriteLine(request.ToString());
-            if (request.Content != null)
-            {
-                Console.WriteLine(await request.Content.ReadAsStringAsync());
-            }
+            if (request.Content != null) Console.WriteLine(await request.Content.ReadAsStringAsync());
             Console.WriteLine();
 
-            HttpResponseMessage response = await base.SendAsync(request, cancellationToken);
+            var response = await base.SendAsync(request, cancellationToken);
 
             Console.WriteLine("Response:");
             Console.WriteLine(response.ToString());
-            if (response.Content != null)
-            {
-                Console.WriteLine(await response.Content.ReadAsStringAsync());
-            }
+            if (response.Content != null) Console.WriteLine(await response.Content.ReadAsStringAsync());
             Console.WriteLine();
 
             return response;

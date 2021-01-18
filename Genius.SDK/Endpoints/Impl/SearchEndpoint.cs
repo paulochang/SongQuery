@@ -10,8 +10,8 @@ namespace Genius.SDK.Endpoints.Impl
 {
     public class SearchEndpoint : ISearchEndpoint
     {
-        private static HttpClient _httpClient;
         private const string ResourceUri = "/search/";
+        private static HttpClient _httpClient;
 
         public SearchEndpoint(HttpClient httpClient)
         {

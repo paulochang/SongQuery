@@ -10,8 +10,8 @@ namespace Genius.SDK.Endpoints.Impl
 {
     public class ArtistsEndpoint : IArtistsEndpoint
     {
-        private static HttpClient _httpClient;
         private const string ResourceUri = "/artists/";
+        private static HttpClient _httpClient;
 
         public ArtistsEndpoint(HttpClient httpClient)
         {
@@ -29,7 +29,7 @@ namespace Genius.SDK.Endpoints.Impl
             uriHelper.AddQueryParameter("per_page", perPage.ToString());
             uriHelper.AddQueryParameter("page", page.ToString());
 
-            string requestUri = uriHelper.ToString();
+            var requestUri = uriHelper.ToString();
 
             try
             {
