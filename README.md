@@ -2,7 +2,7 @@
 A simple Genius REST API C.ient
 
 ## Prerequisites
-- The .NET 5.0 SDK or later
+- [The .NET 5.0 SDK or later](https://dotnet.microsoft.com/download)
 
 
 ## How to build
