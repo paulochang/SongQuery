@@ -6,10 +6,10 @@ using Genius.SDK.Endpoints.Impl;
 
 namespace Genius.SDK
 {
-    public class RestClient
+    public class RestClient : IRestClient
     {
-        public IArtistsEndpoint artists;
-        public ISearchEndpoint search;
+        public IArtistsEndpoint artists { get; }
+        public ISearchEndpoint search { get; }
         
         private Configuration _configuration;
         private string _accessToken;
@@ -27,16 +27,17 @@ namespace Genius.SDK
             _configuration.BaseUri = new Uri(baseURI);
         }
 
-        public RestClient(String accessToken, Configuration configuration)
+        public RestClient(String accessToken, Configuration configuration, HttpClient httpClient = null)
         {
+            httpClient ??= HttpClient;
             _accessToken = accessToken;
             _configuration = configuration;
-            HttpClient.Timeout = configuration.TimeOut;
-            HttpClient.BaseAddress = configuration.BaseUri;
-            HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            httpClient.Timeout = configuration.TimeOut;
+            httpClient.BaseAddress = configuration.BaseUri;
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
-            artists = new ArtistsEndpoint(HttpClient);
-            search = new SearchEndpoint(HttpClient);
+            artists = new ArtistsEndpoint(httpClient);
+            search = new SearchEndpoint(httpClient);
         }
     }
 }
