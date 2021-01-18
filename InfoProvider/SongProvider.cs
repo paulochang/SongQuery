@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Linq;
+using System.Threading.Tasks;
+using Genius.SDK;
+
+namespace InfoProvider
+{
+    public class SongProvider : ISongProvider
+    {
+        public async Task<IEnumerable<string>> GetSongNames(string artist)
+        {
+            var client = new RestClient(" 23RgK2dsERBzPtU9nWcoan7nk1WEHGRv21aVdF8XGcoX5WESF7WI1suassYwIzXR");
+
+            var results = await client.search.GetSearchResults(artist);
+            var artistHit = results.response.hits.FirstOrDefault(hit =>
+                string.Equals(hit.result.primary_artist.name, artist, StringComparison.InvariantCultureIgnoreCase));
+            if (artistHit == null) return Enumerable.Empty<string>();
+
+            var songsCollection = new List<string>();
+            var artistId = artistHit.result.primary_artist.id.ToString();
+            var songs = await client.artists.GetSongsById(artistId);
+            while (songs.response.next_page.HasValue)
+            {
+                songsCollection.AddRange(songs.response.songs.Select(s => s.title));
+                var nextPage = songs.response.next_page.Value;
+                songs = await client.artists.GetSongsById(artistId, page: nextPage);
+            }
+            
+            songsCollection.AddRange(songs.response.songs.Select(s => s.title));
+
+            return songsCollection;
+        }
+    }
+}
