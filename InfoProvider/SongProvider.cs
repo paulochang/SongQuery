@@ -9,7 +9,7 @@ namespace InfoProvider
 {
     public class SongProvider : ISongProvider
     {
-        public const string accessToken = " 23RgK2dsERBzPtU9nWcoan7nk1WEHGRv21aVdF8XGcoX5WESF7WI1suassYwIzXR";
+        public const string accessToken = "xxxxxx";
         public async Task<IEnumerable<string>> GetSongNames(string artist, IRestClient client = null)
         {
             client ??= new RestClient(accessToken);
