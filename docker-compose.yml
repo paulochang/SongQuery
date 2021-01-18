@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  songquerygui:
+    image: ${DOCKER_REGISTRY-}songquerygui
+    build:
+      context: .
+      dockerfile: SongQuery/Dockerfile
