@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Genius.SDK", "Genius.SDK\Ge
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{33CA1393-42BF-4874-AB6B-9015A0F99D33}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfoProvider.Tests", "InfoProvider.Tests\InfoProvider.Tests.csproj", "{F5F30CDE-1230-423C-9174-60B070261209}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{33CA1393-42BF-4874-AB6B-9015A0F99D33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33CA1393-42BF-4874-AB6B-9015A0F99D33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33CA1393-42BF-4874-AB6B-9015A0F99D33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5F30CDE-1230-423C-9174-60B070261209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5F30CDE-1230-423C-9174-60B070261209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5F30CDE-1230-423C-9174-60B070261209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5F30CDE-1230-423C-9174-60B070261209}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

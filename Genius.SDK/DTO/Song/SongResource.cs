@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
 using Genius.SDK.DTO.Artist;
 
 // ReSharper disable InconsistentNaming
