@@ -9,9 +9,10 @@ namespace InfoProvider
 {
     public class SongProvider : ISongProvider
     {
-        public async Task<IEnumerable<string>> GetSongNames(string artist)
+        public const string accessToken = "xxxxxx";
+        public async Task<IEnumerable<string>> GetSongNames(string artist, IRestClient client = null)
         {
-            var client = new RestClient("xxxxxx");
+            client ??= new RestClient(accessToken);
 
             var results = await client.search.GetSearchResults(artist);
             var artistHit = results.response.hits.FirstOrDefault(hit =>
