@@ -6,14 +6,13 @@ namespace Genius.SDK.Common
 {
     public class UriHelper
     {
+        private string ResourceUri { get; }
         private readonly Dictionary<string, string> _queryParameters = new();
 
         public UriHelper(string resourceUri)
         {
             ResourceUri = resourceUri;
         }
-
-        private string ResourceUri { get; }
 
         public void AddQueryParameter(string key, string value)
         {
@@ -23,11 +22,14 @@ namespace Genius.SDK.Common
 
         public void AddQueryParametersCollection(IEnumerable<KeyValuePair<string, string>> queries)
         {
-            foreach (var (key, value) in queries) AddQueryParameter(key, value);
+            foreach (var (key, value) in queries)
+            {
+                AddQueryParameter(key, value);
+            }
         }
 
         /// <summary>
-        ///     Based on https://github.com/dotnet/aspnetcore/blob/master/src/Http/WebUtilities/src/QueryHelpers.cs
+        /// Based on https://github.com/dotnet/aspnetcore/blob/master/src/Http/WebUtilities/src/QueryHelpers.cs
         /// </summary>
         /// <returns> A fully qualified resource URI</returns>
         public override string ToString()
@@ -49,7 +51,10 @@ namespace Genius.SDK.Common
             sb.Append(uriToBeAppended);
             foreach (var (key, value) in _queryParameters)
             {
-                if (value == null) continue;
+                if (value == null)
+                {
+                    continue;
+                }
 
                 sb.Append(hasQuery ? '&' : '?');
                 sb.Append(UrlEncoder.Default.Encode(key));

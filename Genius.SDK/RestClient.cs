@@ -10,24 +10,24 @@ namespace Genius.SDK
     {
         public IArtistsEndpoint artists { get; }
         public ISearchEndpoint search { get; }
-
-        private readonly Configuration _configuration;
+        
+        private Configuration _configuration;
         private string _accessToken;
 #if DEBUG
         private static readonly HttpClient HttpClient = new HttpClient(new LoggingHandler(new HttpClientHandler()));
 #else
-        private static readonly HttpClient HttpClient = new();
+        private static readonly HttpClient HttpClient = new HttpClient();
 #endif
-        public RestClient(string accessToken) : this(accessToken, new Configuration())
+        public RestClient(String accessToken) : this(accessToken, new Configuration())
         {
         }
 
-        public RestClient(string accessToken, string baseURI) : this(accessToken, new Configuration())
+        public RestClient(String accessToken, String baseURI) : this(accessToken, new Configuration())
         {
             _configuration.BaseUri = new Uri(baseURI);
         }
 
-        public RestClient(string accessToken, Configuration configuration, HttpClient httpClient = null)
+        public RestClient(String accessToken, Configuration configuration, HttpClient httpClient = null)
         {
             httpClient ??= HttpClient;
             _accessToken = accessToken;

@@ -9,6 +9,7 @@ namespace Genius.SDK.DTO.Response
         public class Meta
         {
             public ulong status { get; set; }
+            public string message { get; set; }
         }
     }
 }
