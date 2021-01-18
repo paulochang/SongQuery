@@ -1,11 +1,23 @@
 # SongQuery
 A simple Genius REST API C.ient
 
-## Prerequisites
+
+## How to run and build
+To run this app, you have several alternatives
+
+### Using docker-compose 
+From the root, run the following command
+
+```
+docker-compose run songquerygui sh
+ ```
+
+### Manually building with dotnet
+
+#### Prerequisites
 - [The .NET 5.0 SDK or later](https://dotnet.microsoft.com/download)
 
-
-## How to build
+#### Building and running
 From the root, run the following command in the Terminal
 
 ```
