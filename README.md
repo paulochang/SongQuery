@@ -12,6 +12,7 @@ From the root, run the following command
 docker-compose run songquerygui sh
  ```
 
+
 ### Manually building with dotnet
 
 #### Prerequisites
