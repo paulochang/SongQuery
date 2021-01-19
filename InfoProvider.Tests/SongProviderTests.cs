@@ -3,7 +3,7 @@ using Xunit;
 
 namespace InfoProvider.Tests
 {
-    public class MainTests
+    public class SongProviderTests
     {
         [Fact]
         public async void shouldReturnBasicListOfSongs()
