@@ -15,17 +15,17 @@ namespace InfoProvider
             client ??= new RestClient(accessToken);
 
             var results = await client.search.GetSearchResults(artist);
-            var artistHit = results.response.hits.FirstOrDefault(hit =>
+            var artistHit = results?.response?.hits?.FirstOrDefault(hit =>
                 string.Equals(hit.result.primary_artist.name, artist, StringComparison.InvariantCultureIgnoreCase));
             if (artistHit == null) return Enumerable.Empty<string>();
 
             var songsCollection = new List<string>();
             var artistId = artistHit.result.primary_artist.id.ToString();
             var songs = await client.artists.GetSongsById(artistId);
-            while (songs.response.next_page.HasValue)
+            while (songs.response?.next_page.HasValue ?? false)
             {
                 songsCollection.AddRange(songs.response.songs.Select(s => s.title));
-                var nextPage = songs.response.next_page.Value;
+                var nextPage = songs.response?.next_page;
                 songs = await client.artists.GetSongsById(artistId, page: nextPage);
             }
 
