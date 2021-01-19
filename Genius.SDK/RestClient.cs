@@ -13,11 +13,9 @@ namespace Genius.SDK
 
         private readonly Configuration _configuration;
         private string _accessToken;
-#if DEBUG
-        private static readonly HttpClient HttpClient = new HttpClient(new LoggingHandler(new HttpClientHandler()));
-#else
+        
+        //private static readonly HttpClient HttpClient = new(new LoggingHandler(new HttpClientHandler()));
         private static readonly HttpClient HttpClient = new();
-#endif
         public RestClient(string accessToken) : this(accessToken, new Configuration())
         {
         }

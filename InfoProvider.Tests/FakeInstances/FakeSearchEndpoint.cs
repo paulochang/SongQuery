@@ -19,7 +19,7 @@ namespace InfoProvider.Tests.FakeInstances
                 {
                     hits = new List<SearchResource>
                     {
-                        new ()
+                        new()
                         {
                             result = new SongResource
                             {
@@ -30,7 +30,7 @@ namespace InfoProvider.Tests.FakeInstances
                                 }
                             }
                         },
-                        new ()
+                        new()
                         {
                             result = new SongResource
                             {
