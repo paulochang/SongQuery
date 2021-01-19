@@ -14,12 +14,12 @@ namespace InfoProvider.Tests.FakeInstances
         {
             var searchResponse = new SearchResponse
             {
-                meta = {status = 200},
+                meta = new BaseResponse.Meta {status = 200},
                 response = new SearchResponse.InnerResponse
                 {
                     hits = new List<SearchResource>
                     {
-                        new()
+                        new ()
                         {
                             result = new SongResource
                             {
@@ -30,7 +30,7 @@ namespace InfoProvider.Tests.FakeInstances
                                 }
                             }
                         },
-                        new()
+                        new ()
                         {
                             result = new SongResource
                             {
